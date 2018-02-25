@@ -1,0 +1,35 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace NewYearsEveParty
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+           
+            int guestCount = int.Parse(Console.ReadLine());
+            double budget = double.Parse(Console.ReadLine());
+
+            double totalCouvert = guestCount * 20;
+            double moneyLeft = budget - totalCouvert;
+
+            if (moneyLeft < 0)
+            {
+                double moneyToAdd = Math.Abs(moneyLeft);
+                Console.WriteLine($"They won't have enough money to pay the covert. They will need {moneyToAdd} lv more.");
+                   
+            }
+            else
+            {
+                double fireWorkmoney = 0.4 * moneyLeft;
+                double donationMoney = 0.6 * moneyLeft;
+                Console.WriteLine($"Yes! {Math.Round(fireWorkmoney)} lv are for fireworks and {Math.Round(donationMoney)} lv are for donation.");
+                    
+            }                   
+        }
+    }
+}
