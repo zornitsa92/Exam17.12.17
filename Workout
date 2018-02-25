@@ -1,0 +1,37 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Workout
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int dayCount = int.Parse(Console.ReadLine());
+            double dailyKm = double.Parse(Console.ReadLine());
+
+            double totalKm = dailyKm;
+
+            for (int day = 0; day < dayCount; day++)
+            {
+                double percentage = double.Parse(Console.ReadLine());
+                dailyKm += percentage / 100 * dailyKm;
+                totalKm += dailyKm;
+            }
+
+            if (totalKm >= 1000)
+            {
+                double diff = Math.Ceiling(totalKm - 1000);
+                Console.WriteLine($"You've done a great job running {diff} more kilometers! ");
+            }
+            else
+            {
+                double diff = Math.Ceiling(1000 - totalKm);
+                Console.WriteLine($"Sorry Mrs. Ivanova, you need to run {diff} more kilometers");
+            }
+        }
+    }
+}
