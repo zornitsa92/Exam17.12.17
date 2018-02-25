@@ -1,0 +1,24 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace IvanovisFamily
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            double budget = double.Parse(Console.ReadLine());
+            double firstPrecentPrice = double.Parse(Console.ReadLine());
+            double secondPrecentPrice = double.Parse(Console.ReadLine());
+            double thirdPrecentPrice = double.Parse(Console.ReadLine());
+
+            double totalPrice = firstPrecentPrice + secondPrecentPrice + thirdPrecentPrice;
+            budget -= totalPrice;
+            budget *= 0.9;  //budget = budget - 0.1*budget 
+            Console.WriteLine($"{budget:f2}");
+        }
+    }
+}
