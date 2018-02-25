@@ -1,0 +1,87 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Christmas_Sock
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int n = int.Parse(Console.ReadLine());
+
+            int rowMiddleSize = 2 * n;
+            string border = "|";
+            string topDashRow = border + new string('-', rowMiddleSize) + border;
+            string topStarRow = border + new string('*', rowMiddleSize) + border;
+            Console.WriteLine(topDashRow);
+            Console.WriteLine(topStarRow);
+            Console.WriteLine(topDashRow);
+
+
+            int topPartSize = 2 * n - 3;
+            int topPartHalfSize = (topPartSize + 1) / 2;
+            int tildeCount = 0;
+
+            //Top part
+            for (int row = 0; row < (topPartSize + 1) / 2; row++)
+            {
+                tildeCount += 2;
+                int dashCount = (rowMiddleSize - tildeCount) / 2;
+                string dashes = new string('-', dashCount);
+                string tilde = new string('~', tildeCount);
+                Console.WriteLine(border + dashes + tilde + dashes + border);                
+            }
+
+            for (int i = topPartHalfSize - 1; i > 0; i--)
+            {
+                tildeCount -= 2;
+                int dashCount = (rowMiddleSize - tildeCount) / 2;
+                string dashes = new string('-', dashCount);
+                string tilde = new string('~', tildeCount);
+                Console.WriteLine(border + dashes + tilde + dashes + border);
+            }
+
+            //Bottom part
+            int bottomPartSize = n + 3;
+            string bottomBorder = "\\";
+            int xmasRow = (bottomPartSize + 1) / 2;
+            int merryRow = xmasRow - 2;
+            int bottomRowMiddleSize = 2 * n + 1;
+
+            for (int rowNumber = 0; rowNumber < bottomPartSize; rowNumber++)
+            {
+                string dashes = new string('-', rowNumber);
+                if (rowNumber == merryRow || rowNumber == xmasRow)
+                {
+                    int dotCount = (bottomRowMiddleSize - 5) / 2;
+                    string dots = new string('.', dotCount);
+                    string middle = null; 
+
+                    if (rowNumber == merryRow)
+                    {
+                        middle = "MERRY";
+                    }
+                    else
+                    {
+                        middle = "X-MAS";
+                    }
+
+                    Console.WriteLine("{0}{1}{2}{3}{2}{1}", dashes, bottomBorder, dots, middle);
+                }
+                else if (rowNumber == bottomPartSize - 1)
+                {
+                    string lines = new string('_', bottomRowMiddleSize);
+                    Console.WriteLine("{0}{1}{2})", dashes, bottomBorder, lines);
+                }
+                else
+                {
+                    string dots = new string('.', bottomRowMiddleSize);
+                    Console.WriteLine("{0}{1}{2}{1}", dashes, bottomBorder, dots);
+                }
+            }
+        }
+    }
+}
