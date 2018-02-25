@@ -1,0 +1,35 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace MultiplyTable
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string n = Console.ReadLine();
+
+            const char offset = '0';
+
+            int firtNumberMax = n[2] - offset;
+            int secondNumberMax = n[1] - offset;
+            int thirdNumberMax = n[0] - offset;
+
+            for (int first = 1; first <= firtNumberMax ; first++)
+            {
+                for (int second = 1; second <= secondNumberMax; second++)
+                {
+                    for (int third = 1; third <= thirdNumberMax; third++)
+                    {
+                        int result = first * second * third;
+                        Console.WriteLine($"{first} * {second} * {third} = {result};");
+                    }
+                }
+            }
+
+        }
+    }
+}
