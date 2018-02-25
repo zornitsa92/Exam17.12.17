@@ -1,0 +1,102 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace IvanovisHoliday
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int nightCount = int.Parse(Console.ReadLine());
+            string destination = Console.ReadLine();
+            string transportType = Console.ReadLine();
+
+            double adultPricePerNight = 0;
+            double chidPricePerNight = 0;
+
+            switch (destination)
+            {
+                case "Miami":
+                    if (nightCount <= 10)
+                    {
+                        adultPricePerNight = 24.99;
+                        chidPricePerNight = 14.99;
+                    }
+                    else if (nightCount <= 15)
+                    {
+                        adultPricePerNight = 22.99;
+                        chidPricePerNight = 11.99;
+                    }
+                    else 
+                    {
+                        adultPricePerNight = 20.00;
+                        chidPricePerNight = 10.00;
+                    }
+                    break;
+                case "Canary Islands":
+                    if (nightCount <= 10)
+                    {
+                        adultPricePerNight = 32.50;
+                        chidPricePerNight = 28.50;
+                    }
+                    else if (nightCount <= 15)
+                    {
+                        adultPricePerNight = 30.50;
+                        chidPricePerNight = 25.60;
+                    }
+                    else
+                    {
+                        adultPricePerNight = 28.00;
+                        chidPricePerNight = 22.00;
+                    }
+                    break;
+                case "Philippines":
+                    if (nightCount <= 10)
+                    {
+                        adultPricePerNight = 42.99;
+                        chidPricePerNight = 39.99;
+                    }
+                    else if (nightCount <= 15)
+                    {
+                        adultPricePerNight = 41.00;
+                        chidPricePerNight = 36.00;
+                    }
+                    else
+                    {
+                        adultPricePerNight = 38.50;
+                        chidPricePerNight = 32.40;
+                    }
+                    break;
+            }
+
+            double adultTransportPrice = 0;
+            double childTransportPrice = 0;
+            switch (transportType)
+            {
+                case "train":
+                    adultTransportPrice = 22.30;
+                    childTransportPrice = 12.50;
+                    break;
+                case "bus":
+                    adultTransportPrice = 45.00;
+                    childTransportPrice = 37.00;
+                    break;
+                case "airplane":
+                    adultTransportPrice = 90.00;
+                    childTransportPrice = 68.50;
+                    break;
+            }
+
+            double stayTotalPrice = 1.25 * (nightCount * (2 * adultPricePerNight + 3 * chidPricePerNight));
+            double transportTotalPrice = 2 * adultTransportPrice + 3 * childTransportPrice;
+
+            double totalPrice = stayTotalPrice + transportTotalPrice;
+
+            //Console.WriteLine($"{totalPrice:f3}");
+            Console.WriteLine(totalPrice.ToString("f3"));
+        }
+    }
+}
